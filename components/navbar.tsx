@@ -1,7 +1,11 @@
 "use client"
-import { itemsNavbar } from "@/data";
 import Link from "next/link";
+
+import { itemsNavbar } from "@/data";
+
 import { usePathname } from "next/navigation";
+
+import MotionTransition from "./transition-component";
 
 
 // la barra de abajo
@@ -21,7 +25,10 @@ const Navbar = () => {
         h-max: Esta clase establece la altura del div a la altura máxima del contenido, asegurando que solo ocupe tanto espacio vertical como requiera su contenido.
         bottom-10: Esta clase establece el margen inferior del div en 10 unidades (probablemente 2.5rem o 40px, dependiendo de la configuración de Tailwind CSS), posicionándolo 10 unidades por encima de la parte inferior de la ventana gráfica. */
 
-        <div className="fixed z-40 flex flex-col items-center justify-center w-full mt-auto h-max bottom-10">
+        // Con motionTransition automaticamente se hace la transición
+        <MotionTransition position="right" 
+        className="fixed z-40 flex flex-col items-center 
+        justify-center w-full mt-auto h-max bottom-10">
             <nav>
                 <div className="flex items-center justify-center gap-2 px-4 py-1 rounded-full bg-white/15 background-blur-sm ">
                 {itemsNavbar.map((item) => (
@@ -39,7 +46,7 @@ const Navbar = () => {
                     ))}
                 </div>
             </nav>
-        </div>
+        </MotionTransition>
     );
 
 }
